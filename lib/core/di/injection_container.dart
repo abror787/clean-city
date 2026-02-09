@@ -7,6 +7,7 @@ import '../network/auth/auth_repository.dart';
 import '../network/profile/profile_repository.dart';
 import '../network/waste_event/waste_event_repository.dart';
 import '../network/driver/driver_repository.dart';
+import '../network/media/media_repository.dart';
 import '../../presentation/bloc/auth/auth_bloc.dart';
 import '../../presentation/bloc/profile/profile_bloc.dart';
 import '../../presentation/bloc/waste_event/waste_event_bloc.dart';
@@ -24,18 +25,33 @@ Future<void> init() async {
   sl.registerLazySingleton<Dio>(() => ApiClient(authInterceptor: sl()).dio);
 
   // Features - Authentication
-  sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(dio: sl(), sharedPreferences: sl()));
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(dio: sl(), sharedPreferences: sl()),
+  );
   sl.registerFactory(() => AuthBloc(authRepository: sl()));
 
   // Features - Profile
-  sl.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImpl(dio: sl()));
-  sl.registerFactory(() => ProfileBloc(profileRepository: sl(), authRepository: sl()));
+  sl.registerLazySingleton<ProfileRepository>(
+    () => ProfileRepositoryImpl(dio: sl()),
+  );
+  sl.registerFactory(
+    () => ProfileBloc(profileRepository: sl(), authRepository: sl()),
+  );
 
   // Features - Waste Event
-  sl.registerLazySingleton<WasteEventRepository>(() => WasteEventRepositoryImpl(dio: sl()));
+  sl.registerLazySingleton<WasteEventRepository>(
+    () => WasteEventRepositoryImpl(dio: sl()),
+  );
   sl.registerFactory(() => WasteEventBloc(repository: sl()));
 
+  // Features - Media
+  sl.registerLazySingleton<MediaRepository>(
+    () => MediaRepositoryImpl(dio: sl()),
+  );
+
   // Features - Driver Task
-  sl.registerLazySingleton<DriverRepository>(() => DriverRepositoryImpl(dio: sl()));
+  sl.registerLazySingleton<DriverRepository>(
+    () => DriverRepositoryImpl(dio: sl()),
+  );
   sl.registerFactory(() => DriverTaskBloc(repository: sl()));
 }

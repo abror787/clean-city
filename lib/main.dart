@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/app_routes.dart';
 import 'core/di/injection_container.dart' as di;
 import 'core/theme/app_theme.dart';
+import 'core/models/report_data.dart';
 import 'presentation/bloc/auth/auth_bloc.dart';
 import 'presentation/bloc/profile/profile_bloc.dart';
 import 'presentation/bloc/waste_event/waste_event_bloc.dart';
@@ -110,11 +111,6 @@ class CleanCityApp extends StatelessWidget {
             AppRoutes.residentDashboard: (context) =>
                 const ResidentDashboardScreen(),
             AppRoutes.takePhoto: (context) => const TakePhotoScreen(),
-            AppRoutes.selectCategory: (context) => const SelectCategoryScreen(),
-            AppRoutes.confirmLocation: (context) =>
-                const ConfirmLocationScreen(),
-            AppRoutes.additionalDetails: (context) =>
-                const AdditionalDetailsScreen(),
             AppRoutes.reportSuccess: (context) => const ReportSuccessScreen(),
             AppRoutes.reportDetails: (context) => const ReportDetailsScreen(),
             AppRoutes.residentSettings: (context) =>
@@ -130,6 +126,29 @@ class CleanCityApp extends StatelessWidget {
             AppRoutes.driverSettings: (context) => const DriverSettingsScreen(),
           },
           onGenerateRoute: (settings) {
+            // Report flow screens with ReportData arguments
+            if (settings.name == AppRoutes.selectCategory) {
+              final reportData = settings.arguments as ReportData;
+              return MaterialPageRoute(
+                builder: (context) =>
+                    SelectCategoryScreen(reportData: reportData),
+              );
+            }
+            if (settings.name == AppRoutes.confirmLocation) {
+              final reportData = settings.arguments as ReportData;
+              return MaterialPageRoute(
+                builder: (context) =>
+                    ConfirmLocationScreen(reportData: reportData),
+              );
+            }
+            if (settings.name == AppRoutes.additionalDetails) {
+              final reportData = settings.arguments as ReportData;
+              return MaterialPageRoute(
+                builder: (context) =>
+                    AdditionalDetailsScreen(reportData: reportData),
+              );
+            }
+            // Auth flow screens
             if (settings.name == AppRoutes.editProfile) {
               return MaterialPageRoute(
                 builder: (context) => const EditProfileScreen(),
