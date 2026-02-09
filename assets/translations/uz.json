@@ -1,0 +1,26 @@
+{
+    "auth": {
+        "who_are_you": "Siz kimsiz?",
+        "select_role_description": "Davom etish uchun rolingizni tanlang",
+        "resident_title": "Aholi",
+        "resident_description": "Shahar muammolari haqida xabar bering va o'zgarishlarni kuzating",
+        "driver_title": "Xizmat drayveri",
+        "driver_description": "Vazifalarni boshqaring, joylashuvga boring va ishni bajaring",
+        "login_button": "Kirish",
+        "enter_password": "Parolni kiriting",
+        "password_sent": "Vaqtinchalik kod elektron pochtangizga yuborildi",
+        "password_from_email": "Pochta kodi",
+        "resend_code": "Kodni qayta yuborish",
+        "email": "Email"
+    },
+    "profile": {
+        "edit_profile": "Profilni tahrirlash",
+        "changes_saved": "O'zgarishlar saqlandi",
+        "first_name": "Ism",
+        "last_name": "Familiya",
+        "save": "O'zgarishlarni saqlash"
+    },
+    "common": {
+        "error": "Xatolik yuz berdi"
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "auth": {
+    "who_are_you": "Who are you?",
+    "select_role_description": "Please select your role to continue",
+    "resident_title": "Resident",
+    "resident_description": "Report urban issues and track improvements in your city",
+    "driver_title": "Utility Driver",
+    "driver_description": "Manage tasks, navigate to locations, and report completed work",
+    "login_button": "Log In",
+    "enter_password": "Enter Password",
+    "password_sent": "A temporary code has been sent to your email",
+    "password_from_email": "Code from email",
+    "resend_code": "Resend code",
+    "email": "Email"
+  },
+  "profile": {
+    "edit_profile": "Edit Profile",
+    "changes_saved": "Changes saved successfully",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "save": "Save Changes"
+  },
+  "common": {
+    "error": "Something went wrong"
+  }
+}
