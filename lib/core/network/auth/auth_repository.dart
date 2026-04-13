@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../constants/api_constants.dart';
+import '../../constants/demo_constants.dart';
 import 'auth_models.dart';
 
 abstract class AuthRepository {
@@ -30,6 +31,10 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<AuthResponse> login(String email, String password) async {
+    if (kDemoMode) {
+      return _mockLogin(email, password);
+    }
+
     try {
       final response = await dio.post(
         ApiConstants.login,
@@ -117,5 +122,39 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<String?> getUserId() async {
     return sharedPreferences.getString(_userIdKey);
+  }
+
+  // Demo mode mock login
+  Future<AuthResponse> _mockLogin(String email, String password) async {
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    if (email == DemoAccounts.residentEmail &&
+        password == DemoAccounts.residentPassword) {
+      final response = AuthResponse(
+        id: 1,
+        token: 'demo-resident-token-12345',
+        email: DemoAccounts.residentEmail,
+        role: 'resident',
+      );
+      await sharedPreferences.setString(_tokenKey, response.token);
+      await sharedPreferences.setString(_roleKey, response.role);
+      await sharedPreferences.setString(_userIdKey, response.id.toString());
+      return response;
+    } else if (email == DemoAccounts.driverEmail &&
+        password == DemoAccounts.driverPassword) {
+      final response = AuthResponse(
+        id: 2,
+        token: 'demo-driver-token-12345',
+        email: DemoAccounts.driverEmail,
+        role: 'driver',
+      );
+      await sharedPreferences.setString(_tokenKey, response.token);
+      await sharedPreferences.setString(_roleKey, response.role);
+      await sharedPreferences.setString(_userIdKey, response.id.toString());
+      return response;
+    } else {
+      throw Exception(
+          'Invalid credentials. Try resident@demo.com or driver@demo.com with password demo123');
+    }
   }
 }

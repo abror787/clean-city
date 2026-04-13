@@ -5,9 +5,9 @@ class LoginRequest {
   LoginRequest({required this.email, required this.password});
 
   Map<String, dynamic> toJson() => {
-    'email': email,
-    'password': password,
-  };
+        'email': email,
+        'password': password,
+      };
 }
 
 class RegisterRequest {
@@ -26,12 +26,12 @@ class RegisterRequest {
   });
 
   Map<String, dynamic> toJson() => {
-    'email': email,
-    'password': password,
-    'firstName': firstName,
-    'lastName': lastName,
-    'phone': phone,
-  };
+        'email': email,
+        'password': password,
+        'firstName': firstName,
+        'lastName': lastName,
+        'phone': phone,
+      };
 }
 
 class AuthResponse {
@@ -40,7 +40,7 @@ class AuthResponse {
   final String email;
   final String role;
 
-  AuthResponse({
+  const AuthResponse({
     required this.id,
     required this.token,
     required this.email,

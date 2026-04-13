@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../constants/api_constants.dart';
+import '../../constants/demo_constants.dart';
 import 'driver_models.dart';
 
 abstract class DriverRepository {
@@ -17,6 +18,10 @@ class DriverRepositoryImpl implements DriverRepository {
 
   @override
   Future<List<DriverTaskSummary>> getAssignedTasks() async {
+    if (kDemoMode) {
+      return _mockGetAssignedTasks();
+    }
+
     try {
       final response = await dio.get(ApiConstants.driverTasks);
       return (response.data as List)
@@ -29,18 +34,28 @@ class DriverRepositoryImpl implements DriverRepository {
 
   @override
   Future<DriverTaskDetail> getTaskDetail(String id) async {
+    if (kDemoMode) {
+      return _mockGetTaskDetail(id);
+    }
+
     try {
       final response = await dio.get('${ApiConstants.driverTaskById}$id');
       return DriverTaskDetail.fromJson(response.data);
     } on DioException catch (e) {
-      throw Exception(e.response?.data['message'] ?? 'Failed to fetch task detail');
+      throw Exception(
+          e.response?.data['message'] ?? 'Failed to fetch task detail');
     }
   }
 
   @override
   Future<void> acceptTask(String id) async {
+    if (kDemoMode) {
+      return _mockAcceptTask(id);
+    }
+
     try {
-      await dio.post('${ApiConstants.driverTaskById}$id${ApiConstants.driverTaskAccept}');
+      await dio.post(
+          '${ApiConstants.driverTaskById}$id${ApiConstants.driverTaskAccept}');
     } on DioException catch (e) {
       throw Exception(e.response?.data['message'] ?? 'Failed to accept task');
     }
@@ -48,6 +63,10 @@ class DriverRepositoryImpl implements DriverRepository {
 
   @override
   Future<void> completeTask(String id, {String? mediaToken}) async {
+    if (kDemoMode) {
+      return _mockCompleteTask(id);
+    }
+
     try {
       await dio.post(
         '${ApiConstants.driverTaskById}$id${ApiConstants.driverTaskComplete}',
@@ -60,10 +79,37 @@ class DriverRepositoryImpl implements DriverRepository {
 
   @override
   Future<void> failTask(String id) async {
-    try {
-      await dio.post('${ApiConstants.driverTaskById}$id${ApiConstants.driverTaskFail}');
-    } on DioException catch (e) {
-      throw Exception(e.response?.data['message'] ?? 'Failed to report task failure');
+    if (kDemoMode) {
+      return _mockFailTask(id);
     }
+
+    try {
+      await dio.post(
+          '${ApiConstants.driverTaskById}$id${ApiConstants.driverTaskFail}');
+    } on DioException catch (e) {
+      throw Exception(
+          e.response?.data['message'] ?? 'Failed to report task failure');
+    }
+  }
+
+  // Demo mode mock methods
+  List<DriverTaskSummary> _mockGetAssignedTasks() {
+    return DemoData.driverTasks;
+  }
+
+  DriverTaskDetail _mockGetTaskDetail(String id) {
+    return DemoData.getTaskDetail(id);
+  }
+
+  void _mockAcceptTask(String id) {
+    // No-op in demo mode
+  }
+
+  void _mockCompleteTask(String id) {
+    // No-op in demo mode
+  }
+
+  void _mockFailTask(String id) {
+    // No-op in demo mode
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
 import '../../constants/api_constants.dart';
+import '../../constants/demo_constants.dart';
 
 /// Response from media upload API
 class MediaUploadResponse {
@@ -30,6 +31,14 @@ class MediaRepositoryImpl implements MediaRepository {
 
   @override
   Future<MediaUploadResponse> uploadImage(File file) async {
+    if (kDemoMode) {
+      await Future.delayed(const Duration(milliseconds: 300));
+      return MediaUploadResponse(
+        token: 'demo-media-token-${DateTime.now().millisecondsSinceEpoch}',
+        url: null,
+      );
+    }
+
     try {
       final fileName = file.path.split('/').last;
       final formData = FormData.fromMap({

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../constants/api_constants.dart';
+import '../../constants/demo_constants.dart';
 
 class UserProfile {
   final int id;
@@ -50,6 +51,10 @@ class ProfileRepositoryImpl implements ProfileRepository {
 
   @override
   Future<UserProfile> getProfile(int id) async {
+    if (kDemoMode) {
+      return _mockGetProfile(id);
+    }
+
     try {
       final response = await dio.get('${ApiConstants.users}$id');
       return UserProfile.fromJson(response.data);
@@ -59,7 +64,12 @@ class ProfileRepositoryImpl implements ProfileRepository {
   }
 
   @override
-  Future<UserProfile> updateProfile(int id, String firstName, String lastName) async {
+  Future<UserProfile> updateProfile(
+      int id, String firstName, String lastName) async {
+    if (kDemoMode) {
+      return _mockUpdateProfile(id, firstName, lastName);
+    }
+
     try {
       final response = await dio.put(
         '${ApiConstants.users}$id',
@@ -70,7 +80,31 @@ class ProfileRepositoryImpl implements ProfileRepository {
       );
       return UserProfile.fromJson(response.data);
     } on DioException catch (e) {
-      throw Exception(e.response?.data['message'] ?? 'Failed to update profile');
+      throw Exception(
+          e.response?.data['message'] ?? 'Failed to update profile');
     }
+  }
+
+  UserProfile _mockGetProfile(int id) {
+    final isDriver = id == 2;
+    return UserProfile(
+      id: id,
+      email: isDriver ? DemoAccounts.driverEmail : DemoAccounts.residentEmail,
+      firstName: isDriver ? 'Driver' : 'Resident',
+      lastName: 'Demo',
+      role: isDriver ? 'driver' : 'resident',
+      phone: '+998901234567',
+    );
+  }
+
+  UserProfile _mockUpdateProfile(int id, String firstName, String lastName) {
+    return UserProfile(
+      id: id,
+      email: DemoAccounts.residentEmail,
+      firstName: firstName,
+      lastName: lastName,
+      role: 'resident',
+      phone: '+998901234567',
+    );
   }
 }
