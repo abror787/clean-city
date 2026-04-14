@@ -86,12 +86,3 @@ Built with ❤️ using Flutter
 
 
 
-
-
-
-
-
-
-
-!{image alt}(https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/splash_screen.jpg)
-
