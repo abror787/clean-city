@@ -55,19 +55,37 @@ lib/
 
 ## Screenshots
 
-<p float="left">
-  <img src="screenshots/1-login.png" width="200"/>
-  <img src="screenshots/2-resident-dashboard.png" width="200"/>
-  <img src="screenshots/3-select-category.png" width="200"/>
-  <img src="screenshots/4-report-success.png" width="200"/>
-</p>
+![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/splash_screen.jpg)
 
-<p float="left">
-  <img src="screenshots/5-driver-login.png" width="200"/>
-  <img src="screenshots/6-driver-dashboard.png" width="200"/>
-  <img src="screenshots/7-task-details.png" width="200"/>
-  <img src="screenshots/8-profile.png" width="200"/>
-</p>
+!{Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_ordriver_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_more_info.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_maps_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_main_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/c20a283ddb9b6019651db0dffc2cf75abb93a627/resident_info.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/c20a283ddb9b6019651db0dffc2cf75abb93a627/resident_garbage_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/c20a283ddb9b6019651db0dffc2cf75abb93a627/resident_detailInfo_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/resident_app%E2%84%96.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/resident_applications.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/password_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/garbage_location_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/email_enter_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/driver_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/driver_mission_garbage_screen.jpg)
+
+![Image](https://github.com/abror787/clean-city/blob/1b1c50707e0155a31ebb5166aa19467f1ee5b840/driver_info_screen.jpg)
 
 ## API Backend
 
@@ -75,11 +93,11 @@ The backend API is built with Node.js/Express. See separate repository: [clean-c
 
 ---
 
-Built with ❤️ using Flutter
+Built with using Flutter
 
 
 
-![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/splash_screen.jpg)
+
 
 
 
