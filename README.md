@@ -57,7 +57,7 @@ lib/
 
 ![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/splash_screen.jpg)
 
-!{Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_ordriver_screen.jpg)
+![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_ordriver_screen.jpg)
 
 ![Image](https://github.com/abror787/clean-city/blob/0e625d4d62ec8e915c10b9d34bf1993249272590/resident_more_info.jpg)
 
